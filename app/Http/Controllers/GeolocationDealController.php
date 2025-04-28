@@ -26,10 +26,9 @@ class GeolocationDealController extends Controller
 
         $latitude = $request->latitude;
         $longitude = $request->longitude;
-        $distance = $request->distance ?? 10; // Default 10km radius
+        $distance = $request->distance ?? 10; 
         $categoryId = $request->category_id;
-
-        // Calculate distance using the Haversine formula
+        
         $deals = Deal::with(['business', 'category'])
             ->select('deals.*')
             ->selectRaw(

@@ -10,6 +10,7 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     @yield('styles')
 </head>
 
@@ -19,7 +20,7 @@
         <div class="flex justify-between items-center h-16">
             <a href="/" class="flex items-center space-x-2 text-lg font-bold">
                 <i class="bi bi-geo-alt-fill text-xl text-yellow-300"></i>
-                <span class="tracking-wide">LocalDeals</span>
+                <span class="tracking-wide">LocalScope</span>
             </a>
             <div class="hidden md:flex space-x-8">
                 <a href="{{ route('deals.nearby') }}" class="flex items-center space-x-2 hover:text-yellow-200 transition-colors duration-200">

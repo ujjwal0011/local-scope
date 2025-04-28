@@ -17,12 +17,12 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->decimal('discount', 5, 2);
             $table->unsignedBigInteger('business_id');
-            $table->unsignedBigInteger('category_id'); // ✅ Must be unsignedBigInteger
+            $table->unsignedBigInteger('category_id'); 
         
             $table->timestamps();
         
             $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); // ✅ this should now work
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade'); 
         });
         
     }

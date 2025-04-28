@@ -94,7 +94,7 @@ class BusinessController extends Controller
 
     public function storeFromForm(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -103,11 +103,38 @@ class BusinessController extends Controller
             'longitude' => 'required|string',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        Business::create($request->all());
+        Business::create($validated);
         return redirect()->route('businesses.viewAll')->with('success', 'Business created successfully!');
+    }
+
+    // New web methods for edit, update, and delete
+    public function editForm($id)
+    {
+        $business = Business::findOrFail($id);
+        return view('business.edit', compact('business'));
+    }
+
+    public function updateFromForm(Request $request, $id)
+    {
+        $business = Business::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
+        ]);
+
+        $business->update($validated);
+        return redirect()->route('businesses.viewAll')->with('success', 'Business updated successfully!');
+    }
+
+    public function destroyFromForm($id)
+    {
+        $business = Business::findOrFail($id);
+        $business->delete();
+        
+        return redirect()->route('businesses.viewAll')->with('success', 'Business deleted successfully!');
     }
 }

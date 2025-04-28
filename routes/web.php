@@ -12,13 +12,29 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // Get categories with deal counts
+    $categories = App\Models\Category::withCount('deals')->get();
+    
+    // Get featured deals with business information
+    // Since there's no "is_featured" field in your schema, we'll use deals with high discounts
+    $featuredDeals = App\Models\Deal::with('business', 'category')
+        ->orderBy('discount', 'desc')  // Sort by highest discount first
+        ->take(3)                      // Get top 3 deals
+        ->get();
+    
+    // If you want to calculate distance, you'll need user's location
+    // This requires additional implementation in your GeolocationDealController
+    
+    return view('dashboard', compact('categories', 'featuredDeals'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // 🏪 Business Routes
 Route::get('/businesses', [BusinessController::class, 'viewAll'])->name('businesses.viewAll');
 Route::get('/businesses/create', [BusinessController::class, 'createForm'])->name('businesses.createForm');
 Route::post('/businesses/create', [BusinessController::class, 'storeFromForm'])->name('businesses.storeFromForm');
+Route::get('/businesses/{id}/edit', [BusinessController::class, 'editForm'])->name('businesses.editForm');
+Route::put('/businesses/{id}', [BusinessController::class, 'updateFromForm'])->name('businesses.updateFromForm');
+Route::delete('/businesses/{id}', [BusinessController::class, 'destroyFromForm'])->name('businesses.destroyFromForm');
 
 // 🧾 Category Routes
 Route::get('/categories', [CategoryController::class, 'viewAll'])->name('categories.viewAll');

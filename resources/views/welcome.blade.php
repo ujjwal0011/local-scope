@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome to LocalDeals')
+@section('title', 'Welcome to LocalScope')
 
 @section('content')
 <!-- Hero Section with Animated Background -->
@@ -103,7 +103,7 @@
     <!-- CTA Section -->
     <div class="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-3xl p-12 text-center text-white shadow-xl">
         <h3 class="text-3xl font-bold mb-6">Ready to Start Saving?</h3>
-        <p class="text-lg mb-8 text-blue-100 max-w-xl mx-auto">Join thousands of happy customers who save money every day with LocalDeals</p>
+        <p class="text-lg mb-8 text-blue-100 max-w-xl mx-auto">Join thousands of happy customers who save money every day with LocalScope</p>
         <a href="{{ route('deals.nearby') }}" class="inline-block bg-yellow-400 text-indigo-900 px-8 py-4 rounded-full text-lg font-bold hover:bg-yellow-300 transition duration-300 shadow-lg transform hover:scale-105">
             <i class="bi bi-search mr-2"></i> Start Exploring Deals Now
         </a>
@@ -146,7 +146,7 @@
                 <i class="bi bi-star-fill"></i>
                 <i class="bi bi-star-fill"></i>
             </div>
-            <p class="text-gray-600 italic mb-4">"LocalDeals helped me discover new businesses in my area while saving money. It's a win-win!"</p>
+            <p class="text-gray-600 italic mb-4">"LocalScope helped me discover new businesses in my area while saving money. It's a win-win!"</p>
             <div class="flex items-center">
                 <div class="bg-purple-100 w-10 h-10 rounded-full flex items-center justify-center mr-3">
                     <span class="font-bold text-purple-700">SM</span>
